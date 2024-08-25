@@ -46,6 +46,15 @@ export const order_api = createApi({
                 url:`/order/my/details/${id}`
             }),
             providesTags:["Order"]
+        }),
+
+        manageTranId:builder.mutation({
+            query:(data)=>({
+                url:"/order/update/tran-id",
+                method:"PUT",
+                body:data
+            }),
+            invalidatesTags:["Order"]
         })
 
 
@@ -66,7 +75,8 @@ export const {
 
     usePlaceOrderMutation,
     useGetMyOrderListQuery,
-    useGetMyOrderDetailsQuery
+    useGetMyOrderDetailsQuery,
+    useManageTranIdMutation
     
 
 

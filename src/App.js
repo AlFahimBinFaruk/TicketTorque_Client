@@ -25,7 +25,7 @@ function App() {
           <Route path='/ticket-list/:vehicle_id/:from_location_id/:to_location_id' element={<TicketList/>}/>
           <Route path='/my-order-list' element={<MyOrderList/>}/>
 
-          <Route path='/order-details' element={<OrderDetails/>}/>
+          <Route path='/order-details/:order_id' element={<OrderDetails/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>

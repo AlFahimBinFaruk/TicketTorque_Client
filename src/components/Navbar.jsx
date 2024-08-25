@@ -18,6 +18,11 @@ export default function Navbar() {
 
     const { data: details, isLoading } = useGetMyProfileQuery();
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.assign("/login");
+    }
+
     if (isLoading) {
         return <>Loading..</>
     }
@@ -47,13 +52,7 @@ export default function Navbar() {
                             </Link>
                         </MDBNavbarItem>
 
-                        <MDBNavbarItem>
-                            <Link to="/my-order-list">
-                                <MDBNavbarLink>
-                                    My Orders
-                                </MDBNavbarLink>
-                            </Link>
-                        </MDBNavbarItem>
+
 
                         {details?.email ? <>
                             <MDBNavbarItem>
@@ -62,6 +61,18 @@ export default function Navbar() {
                                         Profile
                                     </MDBNavbarLink>
                                 </Link>
+                            </MDBNavbarItem>
+                            
+                            <MDBNavbarItem>
+                                <Link to="/my-order-list">
+                                    <MDBNavbarLink>
+                                        My Orders
+                                    </MDBNavbarLink>
+                                </Link>
+                            </MDBNavbarItem>
+
+                            <MDBNavbarItem>
+                                <MDBNavbarLink type="button" onClick={handleLogout}>Logout</MDBNavbarLink>
                             </MDBNavbarItem>
                         </> : <>
                             <MDBNavbarItem>

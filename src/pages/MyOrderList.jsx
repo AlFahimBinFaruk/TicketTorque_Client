@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SingleHistoryCard from "../components/SingleHistoryCard";
 import { useGetMyOrderListQuery } from "../services/order_api";
 import {
@@ -26,9 +27,13 @@ export default function MyOrderList() {
             <div className="my-5 d-flex">
                 {details?.orders.length > 0 ? <>
                     {details.orders.map((data, ind) => (
+
                         <MDBCard className='mb-4' role="button">
                             <MDBCardBody>
-                                <MDBCardTitle className='text-primary'>{data.id}</MDBCardTitle>
+                                <Link to={`/order-details/${data.id}`}>
+                                    <MDBCardTitle className='text-primary'>{data.id}</MDBCardTitle>
+                                </Link>
+
 
                                 <p>{data.payment_status}</p>
 
@@ -36,6 +41,7 @@ export default function MyOrderList() {
 
                             </MDBCardBody>
                         </MDBCard>
+
                     ))}
                 </> : <p>No data to show.</p>}
 

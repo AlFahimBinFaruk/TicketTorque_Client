@@ -64,6 +64,25 @@ export const user_api = createApi({
         }),
 
 
+        updateProfile:builder.mutation({
+            query:(data)=>({
+                url:"/user/update/my-profile",
+                method:"PUT",
+                body:data
+            }),
+            invalidatesTags:["User"]
+        }),
+
+        changePassword:builder.mutation({
+            query:(data)=>({
+                url:"/user/update/my-password",
+                method:"PUT",
+                body:data
+            }),
+            invalidatesTags:["User"]
+        })
+
+
 
 
 
@@ -75,7 +94,9 @@ export const {
     useLoginUserMutation,
     useRegisterUserMutation,
     useLogoutUserQuery,
-    useGetMyProfileQuery
+    useGetMyProfileQuery,
+    useUpdateProfileMutation,
+    useChangePasswordMutation
 
     
 
