@@ -1,8 +1,8 @@
 import { MDBBtn, MDBInput } from "mdb-react-ui-kit";
 
-export default function Checkout() {
+export default function OrderDetails() {
     return (
-        <div className="checkout w-50  m-auto my-5">
+        <div className="orderDetails w-50  m-auto my-5">
 
             <form action="">
                 <h6>Payment details</h6>

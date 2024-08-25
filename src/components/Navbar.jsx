@@ -9,15 +9,19 @@ import {
     MDBNavbarItem,
     MDBNavbarLink,
     MDBNavbarToggler,
-    MDBCollapse,
-    MDBDropdown,
-    MDBDropdownMenu,
-    MDBDropdownToggle,
-    MDBDropdownItem,
+    MDBCollapse
 } from 'mdb-react-ui-kit';
+import { useGetMyProfileQuery } from '../services/user_api';
 
 export default function Navbar() {
     const [openNavCentred, setOpenNavCentred] = useState(false);
+
+    const { data: details, isLoading } = useGetMyProfileQuery();
+
+    if (isLoading) {
+        return <>Loading..</>
+    }
+
 
     return (
         <MDBNavbar expand='lg' light bgColor='light'>
@@ -43,30 +47,45 @@ export default function Navbar() {
                             </Link>
                         </MDBNavbarItem>
 
-                        {/* <MDBNavbarItem>
-                            <Link to="/login">
+                        <MDBNavbarItem>
+                            <Link to="/my-order-list">
                                 <MDBNavbarLink>
-                                    Login
+                                    My Orders
                                 </MDBNavbarLink>
                             </Link>
                         </MDBNavbarItem>
 
+                        {details?.email ? <>
+                            <MDBNavbarItem>
+                                <Link to="/profile">
+                                    <MDBNavbarLink>
+                                        Profile
+                                    </MDBNavbarLink>
+                                </Link>
+                            </MDBNavbarItem>
+                        </> : <>
+                            <MDBNavbarItem>
+                                <Link to="/login">
+                                    <MDBNavbarLink>
+                                        Login
+                                    </MDBNavbarLink>
+                                </Link>
+                            </MDBNavbarItem>
 
-                        <MDBNavbarItem>
-                            <Link to="/register">
-                                <MDBNavbarLink>
-                                    Register
-                                </MDBNavbarLink>
-                            </Link>
-                        </MDBNavbarItem> */}
 
-                        <MDBNavbarItem>
-                            <Link to="/profile">
-                                <MDBNavbarLink>
-                                    Profile
-                                </MDBNavbarLink>
-                            </Link>
-                        </MDBNavbarItem>
+                            <MDBNavbarItem>
+                                <Link to="/register">
+                                    <MDBNavbarLink>
+                                        Register
+                                    </MDBNavbarLink>
+                                </Link>
+                            </MDBNavbarItem>
+
+                        </>}
+
+
+
+
 
                     </MDBNavbarNav>
                 </MDBCollapse>

@@ -1,13 +1,17 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import Checkout from './pages/Checkout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import PurchaseHistory from './pages/PurchaseHistory';
-import Tickets from './pages/Tickets';
 import Register from './pages/Register';
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import OrderDetails from './pages/OrderDetails';
+import TicketList from './pages/TicketList';
+import MyOrderList from './pages/MyOrderList';
+
 
 function App() {
   return (
@@ -18,9 +22,10 @@ function App() {
       <div className="container">
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/tickets' element={<Tickets/>}/>
-          <Route path='/checkout' element={<Checkout/>}/>
-          <Route path='/history' element={<PurchaseHistory/>}/>
+          <Route path='/ticket-list/:vehicle_id/:from_location_id/:to_location_id' element={<TicketList/>}/>
+          <Route path='/my-order-list' element={<MyOrderList/>}/>
+
+          <Route path='/order-details' element={<OrderDetails/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
@@ -32,6 +37,8 @@ function App() {
        
       </div>
       </BrowserRouter>
+      
+      <ToastContainer/>
     </div>
   );
 }
